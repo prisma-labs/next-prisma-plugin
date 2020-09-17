@@ -5,6 +5,9 @@
   "license": "MIT",
   "author": "William Luke <luke@prisma.io>",
   "description": "Next.js plugin to enable hot reloading of the Prisma Client",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc"
   },
