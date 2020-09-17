@@ -1,7 +1,7 @@
 # NextJS Plugin for Prisma
 
-![npm](https://img.shields.io/npm/v/next-prisma-plugin0?style=flat-square)
-![npm (tag)](https://img.shields.io/npm/v/next-prisma-plugin0/next?style=flat-square)
+![npm](https://img.shields.io/npm/v/next-prisma-plugin?style=flat-square)
+![npm (tag)](https://img.shields.io/npm/v/next-prisma-plugin/next?style=flat-square)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Enables Hot Reloads for the Prisma Client
