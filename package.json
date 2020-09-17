@@ -9,7 +9,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "stable": "dripip stable"
   },
   "repository": {
     "type": "git",
