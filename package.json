@@ -32,6 +32,7 @@
   "devDependencies": {
     "@prisma-labs/prettier-config": "0.1.0",
     "@types/webpack": "^4.41.22",
+    "dripip": "^0.10.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.11.0",
     "prettier": "1.19.1",
