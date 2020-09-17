@@ -12,8 +12,16 @@ const safePath = module => module.split(/[\\\/]/g).join(PATH_DELIMITER)
  * Actual Next.js plugin
  */
 const excludes = [/node_modules(?!\/(@prisma\/client|\.prisma\/client)(?!.*node_modules))/]
-const withPrismaPluginInitializer = () => {
-  const withPrismaPlugin = (nextConfig = {}) => {
+
+const withPrismaPlugin = (nextConfig = {}) => (
+  phase:
+    | "phase-export"
+    | "phase-production-build"
+    | "phase-production-server"
+    | "phase-development-server",
+    thing: any
+) => {
+  if (phase === "phase-development-server") {
     return Object.assign({}, nextConfig, {
       webpack(config: any, options: any) {
         const ignored = config.watchOptions.ignored
@@ -29,8 +37,11 @@ const withPrismaPluginInitializer = () => {
       }
     })
   }
-
-  return withPrismaPlugin
+  let internalConfigObj =
+    typeof nextConfig === "function"
+      ? nextConfig(phase, thing)
+      : nextConfig;
+  return internalConfigObj;
 }
 
-module.exports = withPrismaPluginInitializer
+module.exports = withPrismaPlugin
