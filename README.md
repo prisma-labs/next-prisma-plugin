@@ -22,8 +22,8 @@ const withPrismaPlugin = require('next-prisma-plugin')
 module.exports = withPrismaPlugin()
 ```
 
-# Still TODO
+# TODO
 
-- [ ] Test that it works on Windows
-- [ ] Tests?
-- [ ] Look into automatic page reloads
+- [ ] Windows Support
+- [ ] Tests
+- [ ] Automatic page reloads
