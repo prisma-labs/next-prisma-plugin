@@ -11,7 +11,6 @@ const safePath = module => module.split(/[\\\/]/g).join(PATH_DELIMITER)
 /**
  * Actual Next.js plugin
  */
-const excludes = [/node_modules(?!\/(@prisma\/client|\.prisma\/client)(?!.*node_modules))/]
 
 const withPrismaPlugin = (nextConfig = {}) => (
   phase:
@@ -24,13 +23,17 @@ const withPrismaPlugin = (nextConfig = {}) => (
   if (phase === "phase-development-server") {
     return Object.assign({}, nextConfig, {
       webpack(config: any, options: any) {
-        const ignored = config.watchOptions.ignored
-          .filter((ignored: string) => ignored !== '**/node_modules/**')
-          .concat(excludes)
+        const ignore = ['.prisma/client', '@prisma/client']
 
+        // const includes = ignore.map(module => (new RegExp(`${module}(?!.*node_modules)`)));
+        const excludes = [new RegExp(`node_modules(?!/(${ignore.join('|')})(?!.*node_modules))`)];
+        const ignored = config.watchOptions.ignored.filter(
+          (ignored: string) => ignored !== '**/node_modules/**'
+        ).concat(excludes);
         return Object.assign(config, {
           plugins: [...config.plugins, new PrismaClientReloaderWebpackPlugin()],
           watchOptions: {
+            ...config.watchOptions,
             ignored
           }
         })

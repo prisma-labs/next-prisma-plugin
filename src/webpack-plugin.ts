@@ -5,16 +5,13 @@ const PLUGIN_NAME = 'PrismaClientReloaderWebpackPlugin'
 
 const PATHS = ['.prisma/client/index.js', '@prisma/client/index.js', '@prisma/client/runtime/index.js']
 const TESTS = [
-  /\.next\/static\/build-manifest.json/,
-  /\.next\/server\/ssr-module-cache.js/,
   /\.prisma\/client\/index.js/,
   /@prisma\/client\/index.js/,
-  /@prisma\/client\/runtime\/index.js/
+  /@prisma\/client\/runtime\/index.js/,
 ]
 class PrismaClientReloaderWebpackPlugin {
   apply(compiler: Compiler) {
     const clientPaths = PATHS.map(p => path.join(compiler.context, 'node_modules', p))
-
     compiler.hooks.afterEmit.tapAsync(PLUGIN_NAME, (compilation, callback) => {
       const moduleIds = Object.keys(require.cache)
       TESTS.forEach(regex => {
