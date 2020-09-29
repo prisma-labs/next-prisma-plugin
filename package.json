@@ -1,6 +1,6 @@
 {
   "name": "next-prisma-plugin",
-  "version": "0.0.2",
+  "version": "0.0.0-dripip",
   "main": "dist/index.js",
   "license": "MIT",
   "author": "William Luke <luke@prisma.io>",
