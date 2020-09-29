@@ -1,6 +1,5 @@
 import { CSSReset, ThemeProvider } from '@chakra-ui/core';
 import { css, Global } from '@emotion/core';
-import { Provider } from 'next-auth/client';
 import Head from 'next/head';
 import React from 'react';
 import Layout from '../components/Layout';
@@ -8,7 +7,6 @@ import Layout from '../components/Layout';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <Provider session={pageProps.session}>
       <ThemeProvider>
         <Head>
           <title>Next.js 9.5 + Prisma</title>
@@ -29,7 +27,6 @@ const MyApp = ({ Component, pageProps }) => {
           `}
         />
       </ThemeProvider>
-    </Provider>
   );
 };
 

@@ -27,3 +27,13 @@ module.exports = withPrismaPlugin()
 - [ ] Windows Support
 - [ ] Tests
 - [ ] Automatic page reloads
+
+# Contributing
+
+```
+cd next-prisma-plugin
+yarn
+cd test-app && yarn
+cd .. 
+yarn dev
+```
